@@ -1,0 +1,51 @@
+{
+  "name": "Budget",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "title": "Cat\u00e9gorie",
+      "description": "Cat\u00e9gorie de d\u00e9pense concern\u00e9e",
+      "enum": [
+        "courses",
+        "loisirs",
+        "transport",
+        "logement",
+        "sante",
+        "restaurant",
+        "shopping",
+        "factures",
+        "autre"
+      ]
+    },
+    "limit_amount": {
+      "type": "number",
+      "title": "Seuil mensuel",
+      "description": "Montant maximum de d\u00e9penses par mois avant d\u00e9clenchement de l'alerte"
+    },
+    "alert_email": {
+      "type": "boolean",
+      "title": "Alerte par email",
+      "description": "Recevoir un email quand le seuil est d\u00e9pass\u00e9",
+      "default": true
+    }
+  },
+  "required": [
+    "category",
+    "limit_amount"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "name": "Account",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Nom du compte",
+      "description": "Nom affich\u00e9 du compte"
+    },
+    "type": {
+      "type": "string",
+      "title": "Type de compte",
+      "enum": [
+        "courant",
+        "epargne",
+        "credits"
+      ],
+      "default": "courant"
+    },
+    "iban": {
+      "type": "string",
+      "title": "IBAN",
+      "description": "Num\u00e9ro IBAN du compte"
+    },
+    "balance": {
+      "type": "number",
+      "title": "Solde",
+      "description": "Solde actuel du compte",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "title": "Devise",
+      "default": "EUR"
+    },
+    "color": {
+      "type": "string",
+      "title": "Couleur",
+      "default": "#0f172a"
+    },
+    "card_number": {
+      "type": "string",
+      "title": "Num\u00e9ro de carte",
+      "description": "4 derniers chiffres"
+    },
+    "alert_threshold": {
+      "type": "number",
+      "title": "Seuil d'alerte solde",
+      "description": "Montant minimum en dessous duquel une alerte email est envoy\u00e9e"
+    },
+    "last_balance_alert": {
+      "type": "string",
+      "format": "date",
+      "title": "Derni\u00e8re alerte solde",
+      "description": "Date de la derni\u00e8re alerte envoy\u00e9e pour \u00e9viter les doublons"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "balance"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.D\u00e9partement": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.D\u00e9partement": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.D\u00e9partement": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.D\u00e9partement": "{{user.full_name}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

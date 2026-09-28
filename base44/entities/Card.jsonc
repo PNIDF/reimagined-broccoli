@@ -1,0 +1,80 @@
+{
+  "name": "Card",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "title": "Compte associ\u00e9",
+      "description": "ID du compte rattach\u00e9 \u00e0 la carte"
+    },
+    "holder_name": {
+      "type": "string",
+      "title": "Titulaire",
+      "description": "Nom du titulaire de la carte"
+    },
+    "card_number": {
+      "type": "string",
+      "title": "Num\u00e9ro de carte",
+      "description": "Num\u00e9ro \u00e0 16 chiffres"
+    },
+    "expiry": {
+      "type": "string",
+      "title": "Expiration",
+      "description": "Format MM/AA"
+    },
+    "cvv": {
+      "type": "string",
+      "title": "CVV",
+      "description": "Code de s\u00e9curit\u00e9 \u00e0 3 chiffres"
+    },
+    "network": {
+      "type": "string",
+      "title": "R\u00e9seau",
+      "enum": [
+        "visa",
+        "mastercard",
+        "amex"
+      ],
+      "default": "visa"
+    },
+    "gradient": {
+      "type": "string",
+      "title": "D\u00e9grad\u00e9",
+      "description": "D\u00e9grad\u00e9 CSS personnalis\u00e9",
+      "default": "linear-gradient(135deg, #1e293b, #0f172a)"
+    },
+    "status": {
+      "type": "string",
+      "title": "Statut",
+      "enum": [
+        "active",
+        "frozen",
+        "blocked"
+      ],
+      "default": "active"
+    },
+    "is_virtual": {
+      "type": "boolean",
+      "title": "Carte virtuelle",
+      "default": false
+    },
+    "contactless": {
+      "type": "boolean",
+      "title": "Sans contact",
+      "default": true
+    }
+  },
+  "required": [
+    "account_id",
+    "holder_name",
+    "card_number",
+    "expiry",
+    "cvv"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": null,
+    "delete": null
+  }
+}

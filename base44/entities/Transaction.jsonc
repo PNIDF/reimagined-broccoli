@@ -1,0 +1,74 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "title": "Compte",
+      "description": "ID du compte associ\u00e9"
+    },
+    "label": {
+      "type": "string",
+      "title": "Libell\u00e9",
+      "description": "Libell\u00e9 de la transaction"
+    },
+    "amount": {
+      "type": "number",
+      "title": "Montant",
+      "description": "Montant (n\u00e9gatif = d\u00e9bit, positif = cr\u00e9dit)"
+    },
+    "type": {
+      "type": "string",
+      "title": "Type",
+      "enum": [
+        "debit",
+        "credit"
+      ],
+      "default": "debit"
+    },
+    "category": {
+      "type": "string",
+      "title": "Cat\u00e9gorie",
+      "enum": [
+        "courses",
+        "loisirs",
+        "transport",
+        "logement",
+        "sante",
+        "salaire",
+        "restaurant",
+        "shopping",
+        "factures",
+        "autre"
+      ],
+      "default": "autre"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Date"
+    },
+    "merchant": {
+      "type": "string",
+      "title": "Commer\u00e7ant",
+      "description": "Nom du commer\u00e7ant ou b\u00e9n\u00e9ficiaire"
+    },
+    "status": {
+      "type": "string",
+      "title": "Statut",
+      "enum": [
+        "validee",
+        "en_attente",
+        "annulee"
+      ],
+      "default": "validee"
+    }
+  },
+  "required": [
+    "account_id",
+    "label",
+    "amount",
+    "type",
+    "date"
+  ]
+}
